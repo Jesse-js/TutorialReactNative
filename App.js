@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   View,
   StyleSheet,
@@ -5,21 +6,21 @@ import {
   Text,
   Image,
   Button,
+  Modal,
 } from "react-native";
 
 const img = require("./assets/icon.png");
 const onPressImg = require("./assets/on-press-image.png");
 
 export default function App() {
+  const [isModalVisible, setModalVisible] = useState(false);
   return (
     <View style={styles.container}>
       <Text style={styles.title}>
         Hello, this is a simple React Native tutorial!
       </Text>
       <ScrollView>
-        <Text style={styles.bigText}>
-          Core Components
-        </Text>
+        <Text style={styles.bigText}>Core Components</Text>
         <Text style={styles.midText}>
           In the React Native the main core component is the View element
           similar to div element in the web development. It is used for display
@@ -39,12 +40,30 @@ export default function App() {
           Button example!
         </Text>
         <Text style={styles.midText}>
-          The Button element has events like onPress, onPressIn, onPressOut and onLongPress.
-          See the image below that show when this events occurs.
+          The Button element has events like onPress, onPressIn, onPressOut and
+          onLongPress. See the image below that show when this events occurs.
         </Text>
         <Image source={onPressImg} style={styles.bigImage} />
       </ScrollView>
-      <Button title="Press me" />
+      <Button title="Press me" onPress={() => setModalVisible(true)} />
+      <Modal
+        visible={isModalVisible}
+        onRequestClose={() => setModalVisible(false)}
+        animationType="slide"
+        presentationStyle="pageSheet"
+      >
+        <View style={styles.modal}>
+          <Text style={styles.title}>Modal</Text>
+          <Text style={styles.midText}>
+            This is a modal. You can close it by pressing the button below.
+          </Text>
+          <Button
+            title="Close"
+            color="red"
+            onPress={() => setModalVisible(false)}
+          />
+        </View>
+      </Modal>
     </View>
   );
 }
@@ -53,6 +72,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "lightgray",
+    padding: 60,
+  },
+  modal: {
+    backgroundColor: "white",
     padding: 60,
   },
   title: {
@@ -67,7 +90,7 @@ const styles = StyleSheet.create({
   },
   midText: {
     fontSize: 15,
-    marginTop: 10,
+    marginBottom: 10,
   },
   midImage: {
     height: 200,
