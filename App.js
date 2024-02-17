@@ -1,20 +1,41 @@
-import { View, StyleSheet, ScrollView, Text } from "react-native";
+import {
+  View,
+  StyleSheet,
+  ScrollView,
+  Text,
+  Image,
+  Button,
+} from "react-native";
+
+const img = require("./assets/icon.png");
 
 export default function App() {
   return (
     <View style={styles.container}>
+      <Text style={styles.title}>
+        Hello, this is a simple React Native tutorial!
+      </Text>
       <ScrollView>
-        <Text style={styles.bigText}>
-          Hello, this is a simple React Native tutorial!
-        </Text>
         <Text style={styles.midText}>
-          In the Reac Native the main core component is the View element similar
-          to div element in the web development.
+          In the React Native the main core component is the View element
+          similar to div element in the web development. It is used for display
+          any contents.
         </Text>
         <Text style={styles.midText}>
           To display any text into screen you should use the Text element.
         </Text>
+        <Text style={styles.midText}>
+          To display any image into screen you should use the Image element. As
+          you can see below.
+        </Text>
+        <Image source={img} style={styles.midImage} />
+        <Text style={styles.midText}>
+          There are many other interesting elements in React Native, like the
+          Button, TextInput, and others. In the end of this screen you can see a
+          Button example!
+        </Text>
       </ScrollView>
+      <Button title="Press me" />
     </View>
   );
 }
@@ -25,12 +46,23 @@ const styles = StyleSheet.create({
     backgroundColor: "lightgray",
     padding: 60,
   },
-  bigText: {
+  title: {
     fontSize: 25,
+    fontWeight: "bold",
+    textAlign: "center",
+    marginBottom: 20,
+  },
+  bigText: {
+    fontSize: 20,
     fontWeight: "bold",
   },
   midText: {
     fontSize: 15,
-    marginTop: 20,
+    marginTop: 10,
+  },
+  midImage: {
+    height: 200,
+    width: 200,
+    margin: 20,
   },
 });
