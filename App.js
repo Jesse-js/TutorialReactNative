@@ -8,6 +8,7 @@ import {
 } from "react-native";
 
 const img = require("./assets/icon.png");
+const onPressImg = require("./assets/on-press-image.png");
 
 export default function App() {
   return (
@@ -16,6 +17,9 @@ export default function App() {
         Hello, this is a simple React Native tutorial!
       </Text>
       <ScrollView>
+        <Text style={styles.bigText}>
+          Core Components
+        </Text>
         <Text style={styles.midText}>
           In the React Native the main core component is the View element
           similar to div element in the web development. It is used for display
@@ -34,6 +38,11 @@ export default function App() {
           Button, TextInput, and others. In the end of this screen you can see a
           Button example!
         </Text>
+        <Text style={styles.midText}>
+          The Button element has events like onPress, onPressIn, onPressOut and onLongPress.
+          See the image below that show when this events occurs.
+        </Text>
+        <Image source={onPressImg} style={styles.bigImage} />
       </ScrollView>
       <Button title="Press me" />
     </View>
@@ -63,6 +72,11 @@ const styles = StyleSheet.create({
   midImage: {
     height: 200,
     width: 200,
+    margin: 20,
+  },
+  bigImage: {
+    height: 200,
+    width: 250,
     margin: 20,
   },
 });
